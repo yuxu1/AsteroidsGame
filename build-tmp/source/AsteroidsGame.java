@@ -1,3 +1,19 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class AsteroidsGame extends PApplet {
+
 SpaceShip rocket= new SpaceShip();
 Star[] stars;
 Asteroids[] rock;
@@ -41,11 +57,11 @@ public void keyPressed()
   } 
   if (key==CODED && keyCode==UP) //accelerate forward
   {
-    rocket.accelerate(0.1);
+    rocket.accelerate(0.1f);
   }
   if (key==CODED && keyCode==DOWN) //accelerate backward
   {
-    rocket.accelerate(-0.1);
+    rocket.accelerate(-0.1f);
   }
   if (keyPressed==true && key==' ')//hyperspace
   {
@@ -220,7 +236,7 @@ class Asteroids extends Floater
     myDirectionX=((int)(Math.random()*10))-5;
     myDirectionY=((int)(Math.random()*10))-5;
     myPointDirection=((int)(Math.random())*180);
-    if (Math.random()<0.5)
+    if (Math.random()<0.5f)
     {
       rotationSpeed=((int)(Math.random())*5);
     } else
@@ -263,5 +279,14 @@ class Asteroids extends Floater
   }
   public double getPointDirection() {
     return (int) myPointDirection;
+  }
+}
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "AsteroidsGame" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
   }
 }
